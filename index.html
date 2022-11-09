@@ -121,28 +121,42 @@
           <h2>Czym się zajmujemy</h2>
           <ul class="images-services">
             <li>
-              <img
+              <div class="images-services-item"><img
                 src="./images/box1.jpg"
                 width="370"
                 height="294"
                 alt="programista piszący kod"
-              />
+                />
+                <div class="name-services">
+                <p>Aplikacje komputerowe</p>
+              </div>
+                </div>
+                
+              
             </li>
             <li>
-              <img
+              <div class="images-services-item"><img
                 src="./images/box2.jpg"
                 width="370"
                 height="294"
                 alt="programowanie smartfona"
               />
+              <div class="name-services">
+                <p>Aplikacje mobilne</p>
+                </div>
+              </div>
             </li>
             <li>
-              <img
+              <div class="images-services-item"><img
                 src="./images/box3.jpg"
                 width="370"
                 height="294"
                 alt="stylowanie kolorów"
               />
+              <div class="name-services">
+                <p>Rozwiązania graficzne</p>
+              </div>
+</div>
             </li>
           </ul>
         </div>
@@ -436,7 +450,9 @@
     </footer>
     <div class="backdrop is-hidden" data-modal>
       <div class="modal">
-        <button type="button" class="close-btn" data-modal-close>X</button>
+        <button type="button" class="close-btn" data-modal-close><svg width="18" height="18">
+                <use href="./images/icons.svg#icon-close"></use>
+              </svg></button>
       </div>
     </div>
     <script src="./js/modal.js"></script>
