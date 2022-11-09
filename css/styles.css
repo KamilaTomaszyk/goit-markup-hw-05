@@ -14,11 +14,51 @@
   --black-transp: rgba(0, 0, 0, 0.15);
   --opacity-white: rgba(255, 255, 255, 0.1);
 }
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 528px;
+  height: 581px;
+  background-color: #ffffff;
+  border: 2px solide var(--second-black);
+  border-radius: 4px;
+  opacity: inherit;
+  visibility: inherit;
+  transition-property: visibility, opacity;
+  transition-duration: 2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
 
 body {
   font-family: "Roboto", sans-serif;
   color: var(--black-main);
   background-color: var(--main-white);
+  position: relative;
 }
 .hidden-header {
   position: absolute;
@@ -85,6 +125,8 @@ ul {
 .link-nav {
   text-decoration-line: none;
   color: var(--black-main);
+  position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link-nav:hover {
   color: var(--main-blue);
@@ -95,6 +137,35 @@ ul {
 .link-nav:active {
   color: var(--main-blue);
 }
+/* .link-nav:hover::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  background-color: var(--main-blue); */
+/* } */
+
+.portfolio::after {
+  content: "";
+  height: 4px;
+  width: 104%;
+  position: absolute;
+  left: 0;
+  bottom: -33px;
+  background-color: var(--main-blue);
+}
+.index::after {
+  content: "";
+  height: 4px;
+  width: 104%;
+  position: absolute;
+  left: 0;
+  bottom: -34px;
+  background-color: var(--main-blue);
+}
+
 .contacts {
   display: flex;
   gap: 30px;
@@ -113,6 +184,8 @@ ul {
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 250 ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact:focus {
   color: var(--main-blue);
@@ -168,6 +241,7 @@ h1 {
   cursor: pointer;
   padding-block: 10px;
   width: 200px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .main-button:hover {
   background-color: var(--main-silver);
@@ -260,6 +334,8 @@ h2 {
   display: flex;
   gap: 10px;
   padding: 16px 32px 0px;
+  color:var(--icon-color4);
+  
 }
 .social-media div {
   display: flex;
@@ -270,32 +346,40 @@ h2 {
   border: 1px solid var(--main-white);
   border-radius: 50%;
   cursor: pointer;
+  --color4: currentColor;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .social-media div:hover {
   --color4: var(--main-white);
   background-color: var(--main-blue);
 }
 .social-media div:focus {
-  --color4: var(--main-white);
+  --color4: var(--main-white)
   background-color: var(--main-blue);
 }
 .our-customers {
   display: flex;
   gap: 30px;
+  color: var(--icon-color4);
+
 }
 .our-customers li {
   border: 1px solid var(--icon-color4);
   border-radius: 4px;
   cursor: pointer;
+  --color4: currentColor;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .our-customers li:hover {
   --color4: var(--main-blue);
   border-color: var(--main-blue);
 }
-.our-customers svg:focus {
+ .our-customers svg:focus {
   --color4: var(--main-blue);
-  border-color: var(--main-blue);
-}
+  border-color: var(--main-blue); }
 
 .contact-info {
   background: var(--background-grey);
@@ -338,6 +422,7 @@ h2 {
   letter-spacing: 0.03em;
   text-decoration-line: none;
   color: var(--second-silver);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-contact:focus {
@@ -370,15 +455,14 @@ h2 {
   cursor: pointer;
   background-color: var(--opacity-white);
   --color4: var(--main-white);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-media-footer div:hover {
-  --color4: var(--main-white);
-  background-color: var(--main-blue);
+    background-color: var(--main-blue);
 }
 .social-media-footer div:focus {
-  --color4: var(--main-white);
-  background-color: var(--main-blue);
+    background-color: var(--main-blue);
 }
 .contact-info .container {
   display: flex;
@@ -406,7 +490,10 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   padding: 6px 22px;
-}
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  box-shodow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+} 
 .filter button:focus {
   background-color: var(--main-blue);
   color: var(--main-white);
@@ -418,7 +505,7 @@ h2 {
   color: var(--main-white);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
+  
 }
 .project-items {
   display: flex;
@@ -437,6 +524,7 @@ h2 {
   border-color: var(--light-grey);
   margin: 0;
   cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-card:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
